@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://dev-bumble-backend.vercel.app/:path*"
+    }
+  ]
+}
