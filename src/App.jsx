@@ -9,7 +9,7 @@ import Feed from "./components/Feed.jsx";
 import Connections from "./components/Connections.jsx";
 import Requests from "./components/Requests.jsx";
 import Welcome from "./components/Welcome.jsx";
-
+import ChatInterface from "./components/Chat.jsx";
 function App() {
   return (
     <Provider store={appStore}>
@@ -22,6 +22,7 @@ function App() {
             <Route path='/profile' element={<Profile />} />
             <Route path='/connections' element={<Connections />} />
             <Route path='/requests' element={<Requests />} />
+            <Route path='/chat/:id' element={<ChatInterface />} />
           </Route>
         </Routes>
       </BrowserRouter>

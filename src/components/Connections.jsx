@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import { BASE_URL } from '../utils/constants';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { addconnection,removeconnection } from '../utils/connectionSlice';
 
 function Connections() {
     const connections = useSelector((store)=>store.connections);
     const dispatch = useDispatch();
-    
+    const navigate = useNavigate();
+    const handleChat = (recieverID) =>{
+      
+      navigate('/chat/'+recieverID);
+    }
     const unmatchhandle = async (requestID)=>{
       const res = await axios.post(BASE_URL+`/request/recieved/rejected/${requestID}`,{},{withCredentials:true});
       console.log("unmatch",res.data);
@@ -63,7 +68,7 @@ function Connections() {
                 <div className="mt-4 flex justify-end space-x-2">
                   <button 
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-                    onClick={() => {/* Add chat functionality */}}
+                    onClick={() => {handleChat(connection._id)}}
                   >
                     Chat
                   </button>

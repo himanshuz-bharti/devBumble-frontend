@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/:path*",
-      "destination": "https://dev-bumble-backend.vercel.app/:path*"
+      "destination": "http://localhost:3000/:path*"
     }
   ]
 }
