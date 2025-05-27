@@ -36,6 +36,7 @@ export default function ChatInterface() {
   const fetchMessages = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/chat/${id}`, { withCredentials: true });
+     // console.log(res.data.messages);
       const newMessages = res.data.messages.map((message) => {
         const isOutgoing = message.senderId._id === fromUserId;
         const sender = isOutgoing ? 'You' : message.senderId.firstname;
@@ -109,7 +110,6 @@ export default function ChatInterface() {
       status: 'sent',
       isOutgoing: true,
     };
-
     setMessages((prev) => [...prev, newMsg]);
     socketRef.current.emit('send-message', {
       firstName: Loggedinuser?.firstname,
